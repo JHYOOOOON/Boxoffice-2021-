@@ -1,17 +1,24 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
     return (
         <div className="header-wrapper">
             <header>
                 <li className="menu-item">
-                    <a href="#">일별 박스오피스</a>
+                    <NavLink activeClassName="active" to="/">
+                        일일
+                    </NavLink>
                 </li>
                 <li className="menu-item">
-                    <a href="#">주간 박스오피스</a>
+                    <NavLink activeClassName="active" to="/week">
+                        주간
+                    </NavLink>
                 </li>
                 <li className="menu-item">
-                    <a href="#">주말 박스오피스</a>
+                    <NavLink activeClassName="active" to="/weekend">
+                        주말
+                    </NavLink>
                 </li>
             </header>
         </div>

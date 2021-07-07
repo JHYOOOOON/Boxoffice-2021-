@@ -9,11 +9,9 @@ import axios from "axios";
     - weekGb: "0": 주간, "1": 주말(금~일)(default), "2": 주중(월~목)
 */
 
+// [ ISSUE ] key를 여기다 넣었을 때 안 됨
 const api = axios.create({
     baseURL: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice",
-    params: {
-        key: "c67b7686e20e227e8218f3c03689b249",
-    },
 });
 
 /* GET targetDt (YYYYMMDD) */
@@ -22,43 +20,44 @@ const getDate = (isDaily) => {
     let year, month, date;
 
     isDaily
-        ? nDate.setDate(settingDate.getDate() - 1)
-        : nDtae.setDate(settingDate.getDate() - 7);
+        ? nDate.setDate(nDate.getDate() - 1)
+        : nDate.setDate(nDate.getDate() - 7);
 
     year = nDate.getFullYear();
     month = nDate.getMonth() + 1;
     date = nDate.getDate();
 
-    return year + (month < 10)
-        ? `0${month}`
-        : month + (date < 10)
-        ? `0${date}`
-        : date;
+    let fullDate = `${year}`;
+    fullDate += month < 10 ? `0${month}` : month;
+    fullDate += date < 10 ? `0${date}` : date;
+
+    return fullDate;
 };
 
-const dailyApi = () => {
-    api.get("/searchDailyBoxOfficeList.json", {
+export const dailyApi = () => {
+    return api.get("/searchDailyBoxOfficeList.json", {
         params: {
+            key: "c67b7686e20e227e8218f3c03689b249",
             targetDt: getDate(true),
         },
     });
 };
 
-const weekApi = () => {
-    api.get("/searchWeeklyBoxOfficeList.json", {
+export const weekApi = () => {
+    return api.get("/searchWeeklyBoxOfficeList.json", {
         params: {
+            key: "c67b7686e20e227e8218f3c03689b249",
             targetDt: getDate(false),
             weekGb: "0",
         },
     });
 };
 
-const weekendApi = () => {
-    api.get("/searchWeeklyBoxOfficeList.json", {
+export const weekendApi = () => {
+    return api.get("/searchWeeklyBoxOfficeList.json", {
         params: {
+            key: "c67b7686e20e227e8218f3c03689b249",
             targetDt: getDate(false),
         },
     });
 };
-
-export { dailyApi, weekApi, weekendApi };
