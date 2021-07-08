@@ -1,4 +1,5 @@
 import React from "react";
+import Loader from "../Components/Loader";
 import { dailyApi } from "../api";
 
 /* 일일 박스오피스 */
@@ -28,7 +29,7 @@ class DailyContainer extends React.Component {
     }
 
     render() {
-        return <div>Daily</div>;
+        return <>{this.state.loading ? <Loader /> : <div></div>}</>;
     }
 }
 
