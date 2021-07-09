@@ -40,19 +40,20 @@ class DailyContainer extends React.Component {
                 ) : (
                     <Section title={this.state.title} term={this.state.term}>
                         {this.state.data && this.state.data.length > 0 && (
-                            <ul>
-                                {this.state.data.map((movie) => {
+                            <>
+                                {this.state.data.map((movie, i) => {
                                     return (
                                         <Rank
-                                            key={movie.rank}
+                                            key={i}
                                             rank={movie.rank}
                                             rankON={movie.rankOldAndNew}
                                             movieNm={movie.movieNm}
                                             audiAcc={movie.audiAcc}
+                                            rankInten={movie.rankInten}
                                         />
                                     );
                                 })}
-                            </ul>
+                            </>
                         )}
                         {this.state.error && <div>this.state.error</div>}
                     </Section>

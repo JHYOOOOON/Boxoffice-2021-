@@ -1,5 +1,6 @@
 import Router from "./Router";
-import "../scss/Section.css";
+import "../scss/Section.scss";
+import "../scss/App.css";
 function App() {
     return <Router />;
 }

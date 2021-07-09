@@ -1,5 +1,6 @@
 import React from "react";
 import { weekApi } from "../api";
+import Loader from "../Components/Loader";
 
 /* 주간 박스오피스 */
 class WeekContainer extends React.Component {
@@ -27,7 +28,7 @@ class WeekContainer extends React.Component {
         }
     }
     render() {
-        return <div>Week</div>;
+        return <Loader />;
     }
 }
 
