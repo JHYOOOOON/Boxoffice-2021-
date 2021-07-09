@@ -1,6 +1,11 @@
 import React from "react";
 
-// 순위 증감분을 화살표 표시로 변환
+// 숫자 세자리마다 콤마 찍기
+const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+// 순위 증감분을 화살표로 변환
 // -3 => ▼ 3
 const convertRankInten = (rankInten) => {
     const n = rankInten * 1;
@@ -38,7 +43,7 @@ const Rank = ({ rank, rankON, movieNm, audiAcc, rankInten }) => {
             <div>{convertRankInten(rankInten)}</div>
             <div>
                 <p className="movieNm">{movieNm}</p>
-                <p className="audiAcc">👀 {audiAcc}명</p>
+                <p className="audiAcc">👀 {numberWithCommas(audiAcc)}</p>
             </div>
         </li>
     );

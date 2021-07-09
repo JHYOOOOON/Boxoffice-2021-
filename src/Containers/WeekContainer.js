@@ -1,6 +1,8 @@
 import React from "react";
-import { weekApi } from "../api";
+import Section from "../Components/Section";
+import Rank from "../Components/Rank";
 import Loader from "../Components/Loader";
+import { weekApi } from "../api";
 
 /* 주간 박스오피스 */
 class WeekContainer extends React.Component {
@@ -14,10 +16,12 @@ class WeekContainer extends React.Component {
 
     async componentDidMount() {
         try {
-            const { data: boxOfficeResult } = await weekApi();
+            const {
+                data: { boxOfficeResult: boxOfficeResult },
+            } = await weekApi();
             console.log(boxOfficeResult, ":::weekResult");
             this.setState({
-                title: boxOfficeResult.boxOfficeType,
+                title: boxOfficeResult.boxofficeType,
                 data: boxOfficeResult.weeklyBoxOfficeList,
                 term: boxOfficeResult.showRange,
             });
@@ -28,7 +32,33 @@ class WeekContainer extends React.Component {
         }
     }
     render() {
-        return <Loader />;
+        return (
+            <>
+                {this.state.loading ? (
+                    <Loader />
+                ) : (
+                    <Section title={this.state.title} term={this.state.term}>
+                        {this.state.data && this.state.data.length > 0 && (
+                            <>
+                                {this.state.data.map((movie, i) => {
+                                    return (
+                                        <Rank
+                                            key={i}
+                                            rank={movie.rank}
+                                            rankON={movie.rankOldAndNew}
+                                            movieNm={movie.movieNm}
+                                            audiAcc={movie.audiAcc}
+                                            rankInten={movie.rankInten}
+                                        />
+                                    );
+                                })}
+                            </>
+                        )}
+                        {this.state.error && <div>this.state.error</div>}
+                    </Section>
+                )}
+            </>
+        );
     }
 }
 

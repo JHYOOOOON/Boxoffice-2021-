@@ -7,7 +7,7 @@ const Header = () => {
         <div className="header-wrapper">
             <header>
                 <li className="menu-item">
-                    <NavLink activeClassName="active" to="/">
+                    <NavLink exact activeClassName="active" to="/">
                         일일
                     </NavLink>
                 </li>
