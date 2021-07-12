@@ -1,7 +1,7 @@
 section {
     display: flex;
     justify-content: center;
-    align-items: center;
+    flex-direction: column;
     width: 100%;
     padding: 15px 20px;
     min-height: 480px;
@@ -16,8 +16,11 @@ section {
         font-size: 14px;
     }
     ul {
+        position: relative;
         margin-top: 20px;
         padding: 0;
+        flex: 1;
+
         li {
             display: flex;
             padding: 10px;
@@ -75,12 +78,20 @@ section {
                 margin-left: 7px;
             }
         }
-
         .aData > li:nth-child(2n-1) {
             background-color: rgba(226, 246, 250, 0.5);
         }
         .bData > li:nth-child(2n) {
             background-color: rgba(226, 246, 250, 0.5);
+        }
+        .error {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            text-align: center;
+            line-height: 1.1;
         }
     }
 }

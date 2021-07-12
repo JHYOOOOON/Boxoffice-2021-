@@ -7,7 +7,7 @@ import {
     WeekendContainer as Weekend,
 } from "../Containers";
 
-export default () => {
+const Router = () => {
     return (
         <HashRouter>
             <>
@@ -22,3 +22,5 @@ export default () => {
         </HashRouter>
     );
 };
+
+export default Router;

@@ -17,9 +17,9 @@ class WeekContainer extends React.Component {
     async componentDidMount() {
         try {
             const {
-                data: { boxOfficeResult: boxOfficeResult },
+                data: { boxOfficeResult },
             } = await weekApi();
-            console.log(boxOfficeResult, ":::weekResult");
+            // console.log(boxOfficeResult, ":::weekResult");
             this.setState({
                 title: boxOfficeResult.boxofficeType,
                 data: boxOfficeResult.weeklyBoxOfficeList,
@@ -74,10 +74,19 @@ class WeekContainer extends React.Component {
                     <Loader />
                 ) : (
                     <Section title={this.state.title} term={this.state.term}>
-                        {this.state.data &&
-                            this.state.data.length > 0 &&
-                            splitData()}
-                        {this.state.error && <div>this.state.error</div>}
+                        {this.state.error ? (
+                            <span className="error">
+                                {this.state.error && (
+                                    <div>{this.state.error}</div>
+                                )}
+                            </span>
+                        ) : (
+                            <>
+                                {this.state.data &&
+                                    this.state.data.length > 0 &&
+                                    splitData()}
+                            </>
+                        )}
                     </Section>
                 )}
             </>

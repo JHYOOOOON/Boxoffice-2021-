@@ -17,7 +17,7 @@ class DailyContainer extends React.Component {
     async componentDidMount() {
         try {
             const {
-                data: { boxOfficeResult: boxOfficeResult },
+                data: { boxOfficeResult },
             } = await dailyApi();
             // console.log(boxOfficeResult, ":::dailyResult");
             this.setState({
@@ -75,10 +75,19 @@ class DailyContainer extends React.Component {
                     <Loader />
                 ) : (
                     <Section title={this.state.title} term={this.state.term}>
-                        {this.state.data &&
-                            this.state.data.length > 0 &&
-                            splitData()}
-                        {this.state.error && <div>this.state.error</div>}
+                        {this.state.error ? (
+                            <span className="error">
+                                {this.state.error && (
+                                    <div>{this.state.error}</div>
+                                )}
+                            </span>
+                        ) : (
+                            <>
+                                {this.state.data &&
+                                    this.state.data.length > 0 &&
+                                    splitData()}
+                            </>
+                        )}
                     </Section>
                 )}
             </>
