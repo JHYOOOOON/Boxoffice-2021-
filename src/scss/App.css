@@ -6,11 +6,16 @@ body {
 }
 
 body {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }
 
 #root {
     padding: 30px 0;
     font-family: "Noto Sans KR", sans-serif;
+    margin: 0 auto;
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -16,7 +16,7 @@ const convertRankInten = (rankInten) => {
         return (
             <>
                 <span className="up">
-                    <i class="fas fa-long-arrow-alt-up"></i>
+                    <i className="fas fa-long-arrow-alt-up"></i>
                     <span>{n}</span>
                 </span>
             </>
@@ -25,7 +25,7 @@ const convertRankInten = (rankInten) => {
         return (
             <>
                 <span className="down">
-                    <i class="fas fa-long-arrow-alt-down"></i>
+                    <i className="fas fa-long-arrow-alt-down"></i>
                     {n * -1}
                 </span>
             </>

@@ -32,28 +32,51 @@ class WeekContainer extends React.Component {
         }
     }
     render() {
+        const splitData = () => {
+            const aData = this.state.data.slice(0, 5);
+            const bData = this.state.data.slice(5);
+            return (
+                <>
+                    <div className="aData">
+                        {aData.map((movie, i) => {
+                            return (
+                                <Rank
+                                    key={i}
+                                    rank={movie.rank}
+                                    rankON={movie.rankOldAndNew}
+                                    movieNm={movie.movieNm}
+                                    audiAcc={movie.audiAcc}
+                                    rankInten={movie.rankInten}
+                                />
+                            );
+                        })}
+                    </div>
+                    <div className="bData">
+                        {bData.map((movie, i) => {
+                            return (
+                                <Rank
+                                    key={i}
+                                    rank={movie.rank}
+                                    rankON={movie.rankOldAndNew}
+                                    movieNm={movie.movieNm}
+                                    audiAcc={movie.audiAcc}
+                                    rankInten={movie.rankInten}
+                                />
+                            );
+                        })}
+                    </div>
+                </>
+            );
+        };
         return (
             <>
                 {this.state.loading ? (
                     <Loader />
                 ) : (
                     <Section title={this.state.title} term={this.state.term}>
-                        {this.state.data && this.state.data.length > 0 && (
-                            <>
-                                {this.state.data.map((movie, i) => {
-                                    return (
-                                        <Rank
-                                            key={i}
-                                            rank={movie.rank}
-                                            rankON={movie.rankOldAndNew}
-                                            movieNm={movie.movieNm}
-                                            audiAcc={movie.audiAcc}
-                                            rankInten={movie.rankInten}
-                                        />
-                                    );
-                                })}
-                            </>
-                        )}
+                        {this.state.data &&
+                            this.state.data.length > 0 &&
+                            splitData()}
                         {this.state.error && <div>this.state.error</div>}
                     </Section>
                 )}

@@ -2,21 +2,21 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 100%;
     padding: 15px 20px;
-    min-height: 500px;
+    min-height: 480px;
     box-sizing: border-box;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
         rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     .title {
         font-size: 25px;
-        margin-bottom: 7px;
+        margin-bottom: 10px;
     }
     .term {
         font-size: 14px;
     }
     ul {
-        margin-top: 15px;
+        margin-top: 20px;
         padding: 0;
         li {
             display: flex;
@@ -34,7 +34,7 @@ section {
                 }
                 .rankON {
                     font-size: 13px;
-                    margin-top: 3px;
+                    margin-top: 5px;
                     border: 1px solid #999;
                     border-radius: 5px;
                     padding: 2px;
@@ -74,8 +74,25 @@ section {
                 margin-left: 7px;
             }
         }
-        li:nth-child(2n-1) {
+
+        .aData > li:nth-child(2n-1) {
             background-color: rgba(226, 246, 250, 0.5);
+        }
+        .bData > li:nth-child(2n) {
+            background-color: rgba(226, 246, 250, 0.5);
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    ul {
+        width: 100%;
+        display: flex;
+        .aData {
+            flex: 1;
+        }
+        .bData {
+            flex: 1;
         }
     }
 }
