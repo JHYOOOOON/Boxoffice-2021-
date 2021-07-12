@@ -11,7 +11,7 @@ import axios from "axios";
 
 // [ ISSUE ] key를 여기다 넣었을 때 안 됨
 const api = axios.create({
-    baseURL: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice",
+    baseURL: "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice",
 });
 
 /* GET targetDt (YYYYMMDD) */
