@@ -4,11 +4,10 @@
         display: flex;
         .menu-item {
             position: relative;
-            padding: 25px 30px;
             margin-right: 10px;
             border-radius: 10% 10% 0% 0%;
             overflow: hidden;
-
+            padding: 25px 30px;
             a {
                 display: flex;
                 justify-content: center;
@@ -27,3 +26,14 @@
         }
     }
 }
+// @media screen and (max-width: 480px) {
+//     .menu-item {
+//         padding: 30px 35px;
+//     }
+// }
+
+// @media screen and (min-width: 480px) {
+//     .menu-item {
+//         padding: 25px 30px;
+//     }
+// }
